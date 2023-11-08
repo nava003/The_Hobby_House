@@ -96,15 +96,18 @@ const resolvers = {
           }
         );
       }
-      throw AuthenticationError
+      throw AuthenticationError;
     },
-    removeComment: async (parent, {postId, commentId}, context) => {
+    removeComment: async (parent, { postId, commentId }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId },
           {
             $pull: {
-              comments: { _id: commentId, commentAuthor: context.user.username },
+              comments: {
+                _id: commentId,
+                commentAuthor: context.user.username,
+              },
             },
           },
           {
@@ -112,8 +115,7 @@ const resolvers = {
           }
         );
       }
-      throw AuthenticationError
-        
+      throw AuthenticationError;
     },
     updatePost: async (parent, { postId, postDesc }, context) => {
       if (context.user) {
@@ -125,7 +127,11 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updateComment: async (parent, { postId, commentId, commentText }, context) => {
+    updateComment: async (
+      parent,
+      { postId, commentId, commentText },
+      context
+    ) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId },
@@ -153,16 +159,16 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updatePassword: async (parent, { userId, password }, context) => {
+    updatePassword: async (parent, { userId, password, email }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-          { _id: userId },
+          { _id: userId, email: email },
           { password },
           { new: true }
         );
       }
-      throw AuthenticationError;
-    }
+      throw new Error("Oh no something went wrong");
+    },
   },
 };
 
