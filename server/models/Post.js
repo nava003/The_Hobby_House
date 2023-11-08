@@ -6,17 +6,17 @@ const postSchema = new Schema({
 //     type: String,
 //     required: true
 //   },
-  postCaption: {
-    type: String,
-    maxlength: 150,
-    trim: true,
-  },
   postDesc: {
     type: String,
     required: "Leave a description!",
     minlength: 10,
     maxlength: 300,
     trim: true,
+  },
+  postAuthor: {
+    type: String,
+    required: true,
+    trim: true
   },
   createdAt: {
     type: Date,

@@ -78,24 +78,28 @@ const resolvers = {
           }
         );
       }
+      throw AuthenticationError;
+    },
+    removePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const post = await Post.findOneAndDelete({
+          _id: postId,
+          postAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          {
+            _id: context.user._id,
+          },
+          {
+            $pull: { posts: post._id },
+          }
+        );
+      }
       throw AuthenticationError
     },
-    removePost: async (parent, {postId}, context) => {
-        if (context.user){
-            const post = await Post.findOneAndDelete({
-                _id: postId,
-                postAuthor: context.user.username
-            })
-
-            await User.findOneAndUpdate(
-                {
-                    _id: context.user._id
-                },
-                {
-                    $pull: {posts: post._id}
-                }
-                )
-        }
+    removeComment: async (parent, {postId, commentId}, context) => {
+        
     }
   },
 };
