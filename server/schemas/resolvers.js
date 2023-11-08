@@ -99,7 +99,71 @@ const resolvers = {
       throw AuthenticationError
     },
     removeComment: async (parent, {postId, commentId}, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $pull: {
+              comments: { _id: commentId, commentAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+          }
+        );
+      }
+      throw AuthenticationError
         
+    },
+    updatePost: async (parent, { postId, postDesc }, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: postId, postAuthor: context.user.username },
+          { postDesc },
+          { new: true }
+        );
+      }
+      throw AuthenticationError;
+    },
+    updateComment: async (parent, { postId, commentId, commentText }, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $set: {
+              "comments.$[comment].commentText": commentText,
+            },
+          },
+          {
+            arrayFilters: [{ "comment._id": commentId }],
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw AuthenticationError;
+    },
+    updateUser: async (parent, { userId, username, email }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: userId },
+          { username, email },
+          { new: true }
+        );
+      }
+      throw AuthenticationError;
+    },
+    updatePassword: async (parent, { userId, password }, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: userId },
+          { password },
+          { new: true }
+        );
+      }
+      throw AuthenticationError;
     }
   },
 };
+
+module.exports = resolvers;
