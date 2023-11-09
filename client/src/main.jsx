@@ -6,8 +6,8 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Error from './pages/Error.jsx'
 import Login from './pages/Login.jsx'
-import Profile from './pages/Profile.jsx'
-import SinglePost from './pages/SinglePost.jsx'
+// import Profile from './pages/Profile.jsx'
+// import SinglePost from './pages/SinglePost.jsx'
 
 const router = createBrowserRouter([
     {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       }, {
         path: '/login',
         element: <Login />
-      }, {
+      }, /* {
         path: '/me',
         element: <Profile />
       }, {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
-      }
+      }*/
     ]
     }
 ])

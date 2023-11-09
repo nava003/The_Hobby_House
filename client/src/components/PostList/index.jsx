@@ -20,9 +20,9 @@ const PostList = ({
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${Post.PostAuthor}`}
+                  to={`/profiles/${Post.postAuthor}`}
                 >
-                  {Post.PostAuthor} <br />
+                  {Post.postAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
                     had this Post on {Post.createdAt}
                   </span>
@@ -36,7 +36,7 @@ const PostList = ({
               )}
             </h4>
             <div className="">
-              <p>{Post.PostText}</p>
+              <p>{Post.postText}</p>
             </div>
             <Link
               className=""
@@ -50,4 +50,4 @@ const PostList = ({
   );
 };
 
-export default PostList;
+export default PostList; 
