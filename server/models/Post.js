@@ -27,6 +27,8 @@ const postSchema = new Schema({
     {
       commentText: {
         type: String,
+        minlength: 1,
+        maxlength: 250
       },
       commentAuthor: {
         type: String,
