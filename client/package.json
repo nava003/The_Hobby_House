@@ -1,5 +1,5 @@
 {
-    "name": "solved",
+    "name": "hh-client",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -10,11 +10,17 @@
       "preview": "vite preview"
     },
     "dependencies": {
-      "@apollo/client": "^3.7.14",
+      "@apollo/client": "^3.7.15",
+      "@stripe/stripe-js": "^1.54.0",
+      "@testing-library/react": "^14.0.0",
       "graphql": "^16.6.0",
+      "happy-dom": "^9.20.3",
+      "jwt-decode": "^3.1.2",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
-      "react-router-dom": "^6.11.2"
+      "react-router-dom": "^6.11.2",
+      "vitest": "^0.32.0",
+      "@fortawesome/free-solid-svg-icons": "^6.4.2"
     },
     "devDependencies": {
       "@types/react": "^18.0.28",
