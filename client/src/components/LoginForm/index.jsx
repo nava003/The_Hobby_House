@@ -42,8 +42,6 @@ const Login = (props) => {
 
   return (
     <main className="">
-      <div className="">
-        <div className="">
           <h4 className="">Login</h4>
           <div className="">
             {data ? (
@@ -70,7 +68,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="button"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -85,8 +83,6 @@ const Login = (props) => {
               </div>
             )}
           </div>
-        </div>
-      </div>
     </main>
   );
 };
