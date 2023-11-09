@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,32 +23,26 @@ const Login = (props) => {
     });
   };
 
-  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
   };
 
   return (
     <main className="">
       <div className="">
         <div className="">
-          <h4 className="">Login</h4>
+          <h4 className="">Sign Up</h4>
           <div className="">
             {data ? (
               <p>
@@ -53,6 +51,14 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange}
+                />
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -70,7 +76,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className=""
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -80,7 +86,7 @@ const Login = (props) => {
             )}
 
             {error && (
-              <div className="">
+              <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
             )}
@@ -91,4 +97,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Signup;
