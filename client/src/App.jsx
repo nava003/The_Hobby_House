@@ -6,9 +6,8 @@ import {
     useQuery,
 } from "@apollo/client";
 
-import Header from "./components/Header";
 import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
@@ -36,11 +35,11 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <div className="">
-                <Header />
                 <Nav />
                 <Outlet />
-                <Footer />
             </div>
         </ApolloProvider>
     );
 }
+
+export default App;

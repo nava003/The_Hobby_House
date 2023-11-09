@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
-import './index.css'
+import './main.css'
 
 import App from './App.jsx'
 import Home from './pages/Home.jsx'
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         path: '/me',
         element: <Profile />
       }, {
-        path: '/profiles/:profileId',
+        path: '/profiles/:username',
         element: <Profile />
       }, {
         path: '/posts/:postId',
