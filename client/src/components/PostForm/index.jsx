@@ -8,7 +8,7 @@ import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const PostForm = () => {
-  const [postText, setPostText] = useState('');
+  const [postDesc, setPostDesc] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -27,13 +27,13 @@ const PostForm = () => {
     try {
       const { data } = await addPost({
         variables: {
-          postText,
+          postDesc,
           // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username 
           postAuthor: Auth.getProfile().authenticatedPerson.username
         },
       });
 
-      setPostText('');
+      setPostDesc('');
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +42,8 @@ const PostForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'postText' && value.length <= 280) {
-      setPostText(value);
+    if (name === 'postDesc' && value.length <= 280) {
+      setPostDesc(value);
       setCharacterCount(value.length);
     }
   };
@@ -67,9 +67,9 @@ const PostForm = () => {
           >
             <div className="">
               <textarea
-                name="postText"
+                name="postDesc"
                 placeholder="New post..."
-                value={postText}
+                value={postDesc}
                 className=""
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}

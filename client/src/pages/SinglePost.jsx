@@ -7,32 +7,35 @@ import CommentList from "../components/CommentList";
 import { QUERY_SINGLE_POST } from "../utils/queries";
 
 const SinglePost = () => {
-    const thoughtId = useParams();
+    const { postId } = useParams();
 
     const {loading, data} = useQuery(QUERY_SINGLE_POST, {
-        variables: {thoughtId: thoughtId}
+        variables: {
+            postId
+        }
     });
 
-    const thought = data?.thought || {};
+    const post = data?.post || {};
 
     if (loading) {
         return <div>Loading...</div>
     }
+
     return (
         <div>
             <div className="card mb-3">
                 <p className="card-header">
                     <span style={{fontStyle: "italic", fontWeight: "bold"}}>
-                        Posted by {thought.username}
+                        Posted by {post.postAuthor}
                     </span>{" "}
-                    on {thought.createdAt}
+                    on {post.createdAt}
                 </p>
                 <div className="card-body">
-                    <p>{thought.thoughtText}</p>
+                    <p>{post.postDesc}</p>
                 </div>
             </div>
-            {thought.commentCount > 0 && <CommentList comments={thought.comments} />}
-            <CommentForm thoughtId={thought._id} />
+            <CommentList comments={post.comments} />
+            <CommentForm postId={post._id} />
         </div>
     )
 }
