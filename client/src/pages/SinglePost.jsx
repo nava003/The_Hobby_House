@@ -7,7 +7,7 @@ import CommentList from "../components/CommentList";
 import { QUERY_SINGLE_POST } from "../utils/queries";
 
 const SinglePost = () => {
-    const {postId} = useParams();
+    const { postId } = useParams();
 
     const {loading, data} = useQuery(QUERY_SINGLE_POST, {
         variables: {
