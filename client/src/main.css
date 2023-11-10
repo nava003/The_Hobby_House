@@ -19,7 +19,6 @@
 
 .card h2 {
     color: var(--brown);
-    /* border-bottom: 5px solid var(--brown); */
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
@@ -80,7 +79,6 @@
 }
 
 .form-input {
-    /* background-color: var(--light-green); */
     border: 1px solid var(--dark-green);
     border-radius: 5px;
     box-shadow: 0 0 5px var(--dark-green);
