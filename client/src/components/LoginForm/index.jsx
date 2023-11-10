@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations.js';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations.js";
 
-import Auth from '../../utils/auth.js';
+import Auth from "../../utils/auth.js";
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -35,14 +35,14 @@ const Login = (props) => {
 
     // clear form values
     setFormState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
   return (
     <main className="">
-<<<<<<< HEAD
+
           <h4 className="">Login</h4>
           <div className="">
             {data ? (
@@ -77,7 +77,7 @@ const Login = (props) => {
                 </button>
               </form>
             )}
-=======
+
       {/* <h4 className="center">Login</h4> */}
       <div className="flexCol">
         {data ? (
@@ -88,7 +88,9 @@ const Login = (props) => {
           <form className="flexCol card" onSubmit={handleFormSubmit}>
             <h2 className="center">Login</h2>
             <input
+
               className="signup-form-input"
+
               placeholder="Enter Email"
               name="email"
               type="email"
@@ -97,6 +99,9 @@ const Login = (props) => {
             />
             <input
               className="signup-form-input"
+
+              className="form-input"
+
               placeholder="Enter Password"
               name="password"
               type="password"
@@ -112,14 +117,8 @@ const Login = (props) => {
             </button>
           </form>
         )}
->>>>>>> 3998596 (lots of css)
-
-            {error && (
-              <div className="">
-                {error.message}
-              </div>
-            )}
-          </div>
+        {error && <div className="">{error.message}</div>}
+      </div>
     </main>
   );
 };
