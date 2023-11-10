@@ -7,20 +7,14 @@ const Home = () => {
     const posts = data?.posts || [];
 
     return (
-        <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          {/* <PostForm /> */}
-        </div>
-        <div className="col-12 col-md-8 mb-3">
+      <div className="box">
+        <div className="center">
           {loading ? (
             <div>Loading...</div>
           ) : (
             <PostList
               posts={posts}
-              title="Some Feed for Posts..."
+              title="Posts"
             />
           )}
         </div>
