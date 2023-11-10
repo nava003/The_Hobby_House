@@ -48,7 +48,7 @@ const Login = (props) => {
             Success! You may now head <Link to="/">back to the homepage.</Link>
           </p>
         ) : (
-          <form className="flexCol card" onSubmit={handleFormSubmit}>
+          <form className="flexCol login-card" onSubmit={handleFormSubmit}>
             <h2 className="center">Login</h2>
             <input
 
