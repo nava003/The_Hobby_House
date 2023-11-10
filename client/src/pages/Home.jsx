@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import PostList from '../components/PostList';
+import PostForm from '../components/PostForm';
 import { QUERY_POSTS } from '../utils/queries';
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     const posts = data?.posts || [];
 
     return (
+
       <div className="box">
         <div className="center">
           {loading ? (

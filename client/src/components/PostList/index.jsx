@@ -11,10 +11,10 @@ const PostList = ({
   }
 
   return (
-    <div>
+    <div className='post-container'>
       {showTitle && <h3>{title}</h3>}
-      {Posts &&
-        Posts.map((Post) => (
+      {posts &&
+        posts.map((Post) => (
           <div key={Post._id} className="">
             <h4 className="">
               {showUsername ? (
@@ -36,7 +36,7 @@ const PostList = ({
               )}
             </h4>
             <div className="">
-              <p>{Post.postText}</p>
+              <p>{Post.postDesc}</p>
             </div>
             <Link
               className=""
