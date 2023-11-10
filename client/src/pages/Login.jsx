@@ -8,15 +8,18 @@ const LoginSignup = () => {
 
   return (
     <main>
-      <div className="box">
+      <div className="flexBox">
         <div
-          className="card"
+          className=""
           // style={{ border: '1px dotted #1a1a1a' }}
         >
           <Login />
         </div>
+        <div className='center smallDiv'>
+          <p>OR</p>
+        </div>
         <div
-          className="card"
+          className=""
           // style={{ border: '1px dotted #1a1a1a' }}
         >
           <Signup />
