@@ -42,6 +42,7 @@ const Login = (props) => {
 
   return (
     <main className="">
+<<<<<<< HEAD
           <h4 className="">Login</h4>
           <div className="">
             {data ? (
@@ -76,6 +77,42 @@ const Login = (props) => {
                 </button>
               </form>
             )}
+=======
+      {/* <h4 className="center">Login</h4> */}
+      <div className="flexCol">
+        {data ? (
+          <p>
+            Success! You may now head <Link to="/">back to the homepage.</Link>
+          </p>
+        ) : (
+          <form className="flexCol card" onSubmit={handleFormSubmit}>
+            <h2 className="center">Login</h2>
+            <input
+              className="signup-form-input"
+              placeholder="Enter Email"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              className="signup-form-input"
+              placeholder="Enter Password"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <button
+              className="button"
+              style={{ cursor: "pointer" }}
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        )}
+>>>>>>> 3998596 (lots of css)
 
             {error && (
               <div className="">
