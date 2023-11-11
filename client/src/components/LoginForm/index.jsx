@@ -51,9 +51,7 @@ const Login = (props) => {
           <form className="flexCol login-card" onSubmit={handleFormSubmit}>
             <h2 className="center">Login</h2>
             <input
-
               className="signup-form-input"
-
               placeholder="Enter Email"
               name="email"
               type="email"
@@ -81,6 +79,7 @@ const Login = (props) => {
       </div>
     </main>
   );
-};
+}
+
 
 export default Login;
