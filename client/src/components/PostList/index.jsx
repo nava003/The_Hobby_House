@@ -1,47 +1,37 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const PostList = ({
-  posts,
-  title,
-  showTitle = true,
-  showUsername = true,
-}) => {
+const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
 
   return (
-    <div className='post-container'>
-      {showTitle && <h3>{title}</h3>}
+    <div className="post-container">
+      {showTitle && <h3>Post Feed</h3>}
+
       {posts &&
         posts.map((Post) => (
-          <div key={Post._id} className="">
+          <div key={Post._id} className="single-post-inform">
             <h4 className="">
               {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${Post.postAuthor}`}
-                >
-                  {Post.postAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    had this Post on {Post.createdAt}
-                  </span>
-                </Link>
+                <span className="post-header">
+                  <Link className="post-author" to={`/profiles/${Post.postAuthor}`}>
+                    {Post.postAuthor}
+                  </Link>{" "}
+                  had this Post on {Post.createdAt}
+                </span>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     You had this Post on {Post.createdAt}
                   </span>
                 </>
               )}
             </h4>
-            <div className="">
+            <div className="post-desc">
               <p>{Post.postDesc}</p>
             </div>
-            <Link
-              className=""
-              to={`/Posts/${Post._id}`}
-            >
+            <Link className="join-discussion" to={`/Posts/${Post._id}`}>
               Join the discussion on this Post.
             </Link>
           </div>
@@ -50,4 +40,4 @@ const PostList = ({
   );
 };
 
-export default PostList; 
+export default PostList;
