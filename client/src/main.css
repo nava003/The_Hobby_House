@@ -310,3 +310,28 @@ hr {
 .description {
   font-size: larger;
 }
+
+.tooltipnav {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipnavtext {
+  visibility: hidden;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px 0;
+
+  /* Positioning the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltipnav:hover .tooltipnavtext {
+  visibility: visible;
+}
