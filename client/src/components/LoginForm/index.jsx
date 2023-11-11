@@ -42,17 +42,16 @@ const Login = (props) => {
 
   return (
     <main className="">
-      {/* <h4 className="center">Login</h4> */}
       <div className="flexCol">
         {data ? (
           <p>
             Success! You may now head <Link to="/">back to the homepage.</Link>
           </p>
         ) : (
-          <form className="flexCol card" onSubmit={handleFormSubmit}>
+          <form className="flexCol login-card" onSubmit={handleFormSubmit}>
             <h2 className="center">Login</h2>
             <input
-              className="form-input"
+              className="signup-form-input"
               placeholder="Enter Email"
               name="email"
               type="email"
@@ -60,7 +59,7 @@ const Login = (props) => {
               onChange={handleChange}
             />
             <input
-              className="form-input"
+              className="signup-form-input"
               placeholder="Enter Password"
               name="password"
               type="password"
@@ -76,11 +75,11 @@ const Login = (props) => {
             </button>
           </form>
         )}
-
         {error && <div className="">{error.message}</div>}
       </div>
     </main>
   );
-};
+}
+
 
 export default Login;

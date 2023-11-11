@@ -1,13 +1,12 @@
 // import { useQuery } from '@apollo/client';
 
 import Login from '../components/LoginForm';
-import Signup from '../components/SignUpForm';
+import Signup from '../components/SignupForm';
 
 const LoginSignup = () => {
 
-
   return (
-    <main>
+    <main className='full-width'>
       <div className="flexBox">
         <div
           className=""

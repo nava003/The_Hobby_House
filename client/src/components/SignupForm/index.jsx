@@ -49,10 +49,10 @@ const Signup = () => {
               </p>
             ) : (
               
-              <form className='flexCol card' onSubmit={handleFormSubmit}>
+              <form className='flexCol login-card' onSubmit={handleFormSubmit}>
                 <h2 className="center">Sign Up</h2>
                 <input
-                  className="form-input"
+                  className="signup-form-input"
                   placeholder="Create a Username"
                   name="username"
                   type="text"
@@ -60,7 +60,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="signup-form-input"
                   placeholder="Enter Email"
                   name="email"
                   type="email"
@@ -68,7 +68,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="signup-form-input"
                   placeholder="Create a Password"
                   name="password"
                   type="password"
