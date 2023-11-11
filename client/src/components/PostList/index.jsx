@@ -64,3 +64,4 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 };
 
 export default PostList;
+
