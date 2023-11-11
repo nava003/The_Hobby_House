@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useParams } from "react";
 // import { UPDATE_POST, REMOVE_POST } from "../../utils/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import LikeButton from '../LikeButton';
+import LikeButton from "../LikeButton";
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
+
+
+
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
 
   return (
-    <div className="">
-      <div className="center">
-        {showTitle && <h3 className="">{title}</h3>}
-      </div>
+    <div className="main-div">
+      <div className="center">{showTitle && <h3 className="">{title}</h3>}</div>
       <div className="home-container">
         {posts &&
           posts.map((Post) => (
@@ -32,7 +33,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                   </>
                 )}
               </h3>
-              
+
               <div className="description">
                 <p>{Post.postDesc}</p>
               </div>
@@ -47,15 +48,20 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                   ))}
                 </ul>
               </div> */}
-              
+
               <small>{Post.createdAt}</small>
-             
+
               <hr />
-              <Link to={`/Posts/${Post._id}`} ><FontAwesomeIcon icon={ faComment } style={{color : "var(--brown"}}/>
-              </Link>
-              <LikeButton />
-              
-              
+              <div className="comments-likes-container">
+                <Link to={`/Posts/${Post._id}`}>
+                  <FontAwesomeIcon
+                    icon={faComment}
+                    size="lg"
+                    style={{ color: "var(--brown" }}
+                  />
+                </Link>
+                <LikeButton />
+              </div>
             </div>
           ))}
       </div>
@@ -64,4 +70,3 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 };
 
 export default PostList;
-
