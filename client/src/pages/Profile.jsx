@@ -33,16 +33,16 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+    <div className="main-div">
+      <div className="">
+        <h2 className="">
           Viewing {userParam ? `${user.username}'s` : "Your"} profile.
         </h2>
+
+        {!userParam && <PostForm />}
       </div>
 
-      <div className="mb-3">{!userParam && <PostForm />}</div>
-
-      <div className="mb-3">
+      <div className="">
         <PostList 
         posts={user.posts} 
         title={`${user.username}'s posts...`} 
