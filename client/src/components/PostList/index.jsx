@@ -50,7 +50,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               <small>{Post.createdAt}</small>
              
               <hr />
-              <Link to={`/Posts/${Post._id}`} ><FontAwesomeIcon icon={ faUser } style={{color : "var(--brown"}}/>
+              <Link to={`/Posts/${Post._id}`} ><FontAwesomeIcon icon={ fa } style={{color : "var(--brown"}}/>
               </Link>
               
             </div>
