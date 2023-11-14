@@ -22,7 +22,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
             <div key={Post._id} className="card">
               <h3 className="">
                 {showUsername ? (
-                  <Link className="" to={`/profiles/${Post.postAuthor}`}>
+                  <Link className="profile-name" to={`/profiles/${Post.postAuthor}`}>
                     {Post.postAuthor} <br />
                   </Link>
                 ) : (
@@ -60,6 +60,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                     style={{ color: "var(--brown" }}
                   />
                 </Link>
+                
                 <LikeButton />
               </div>
             </div>

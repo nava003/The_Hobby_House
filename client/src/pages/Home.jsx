@@ -9,12 +9,15 @@ const Home = () => {
     return (
       <div className="main-div">
         <div className="">
+          <h1 className='post-list-title'>
+            Newest Posts
+          </h1>
+
           {loading ? (
             <div>Loading...</div>
           ) : (
             <PostList
               posts={posts}
-              title="Newest Posts"
             />
           )}
         </div>
