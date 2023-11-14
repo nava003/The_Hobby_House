@@ -61,9 +61,6 @@ export const ADD_LIKE = gql`
   mutation likePost($postId: ID!) {
     likePost(postId: $postId) {
       _id
-      postDesc
-      postAuthor
-      createdAt
       likes
     }
   }

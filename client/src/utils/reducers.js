@@ -5,7 +5,8 @@ import{
     UPDATE_CURRENT_CATEGORY,
     REMOVE_POST,
     REMOVE_COMMENT,
-    TOGGLE_DONATION
+    TOGGLE_DONATION,
+    LIKE_POST
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -50,20 +51,6 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 donateOpen: !state.donateOpen
-            };
-
-        case LIKE_POST:
-            return {
-                ...state,
-                posts: state.posts.map((post) => {
-                    if (post._id === action.payload._id) {
-                        return {
-                            ...post,
-                            likes: [...action.payload.likes],
-                        };
-                    }
-                    return post;
-                }),
             };
         
         default:
