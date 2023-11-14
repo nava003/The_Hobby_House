@@ -49,31 +49,29 @@ const PostForm = () => {
 
   return (
     <div className='post-form-inside'>
-      <h3>What's on your techy mind?</h3>
+      <h3 className='post-form-title'>What's on your techy mind?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`character-count ${
+            className={`post-character-counter ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
             Character Count: {characterCount}/280
           </p>
-          <form
-            className=""
-            onSubmit={handleFormSubmit}
-          >
-            <div className="post-desc-textarea">
+              <form
+                className=""
+                onSubmit={handleFormSubmit}
+              >
+
               <textarea
                 name="postDesc"
                 placeholder="New post..."
                 value={postDesc}
-                className=""
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                className="form-input"
                 onChange={handleChange}
               ></textarea>
-            </div>
 
             <div className="submit-button-container">
               <button className="submit-button" type="submit">

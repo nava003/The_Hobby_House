@@ -8,6 +8,7 @@ import Error from './pages/Error.jsx'
 import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx'
 import SinglePost from './pages/SinglePost.jsx'
+import CreatePost from './pages/CreatePost.jsx'
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
+      }, {
+        path: '/create-post',
+        element: <CreatePost />
       }
     ]
     }
