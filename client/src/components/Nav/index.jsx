@@ -1,15 +1,21 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import React, {useState} from "react";
+import CategoryMenu from "../CategoryMenu";
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORIES } from '../../utils/queries';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faPersonThroughWindow, faToilet, faPoo } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
 
-  const[overUser, setOverUser] = useState(false)
-  const[overLogOut, setOverLogOut] = useState(false)
-  const[overLogIn, setOverLogIn] = useState(false)
-  const[overSignUp, setOverSignUp] = useState(false)
+  const[overUser, setOverUser] = useState(false);
+  const[overLogOut, setOverLogOut] = useState(false);
+  const[overLogIn, setOverLogIn] = useState(false);
+  const[overSignUp, setOverSignUp] = useState(false);
+
+  const { categoryData } = useQuery(QUERY_CATEGORIES);
+  const categories = categoryData?.categories || [];
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -17,6 +23,7 @@ function Nav() {
         <ul className="nav-form">
           <li>
             <p><FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/></p>
+            <CategoryMenu />
           </li>
           <li>
             <p>

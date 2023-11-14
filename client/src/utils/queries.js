@@ -14,6 +14,15 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_CATEGORIES = gql`
+  {
+    categories {
+      _id
+      name
+    }
+  }
+`
+
 export const QUERY_POSTS = gql`
   query getPosts {
     posts {

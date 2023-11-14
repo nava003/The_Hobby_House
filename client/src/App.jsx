@@ -7,6 +7,7 @@ import {
 } from "@apollo/client";
 
 import Nav from "./components/Nav";
+import { HobbyProvider } from "./utils/GlobalState";
 // import Footer from "./components/Footer";
 
 import { setContext } from "@apollo/client/link/context";
@@ -34,15 +35,12 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-
-                <Nav />
-
+            <Nav />
+            <HobbyProvider>
                 <div className="outlet">
-                  
-                <Outlet />
-                  
+                    <Outlet />
                 </div>
-              
+            </HobbyProvider>
         </ApolloProvider>
     );
 }
