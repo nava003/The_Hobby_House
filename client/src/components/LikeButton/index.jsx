@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useMutation } from '@apollo/client';
@@ -19,9 +19,8 @@ const LikeButton = ({ postId }) => {
     };
 
     return (
-        <div>
-            <FontAwesomeIcon icon={ faHeart } style={{color : "var(--brown"}} onClick={likePost} />
-            <p>{likes}</p>
+        <div className='likes-container'>
+            <p><FontAwesomeIcon icon={ faHeart } size="lg" style={{color : "var(--brown"}} onClick={likePost} /> {likes}</p>
         </div>
     );
 };

@@ -23,7 +23,7 @@ const SinglePost = () => {
 
     return (
         <div className="post-container">
-            <div className="card mb-3">
+            <div className="single-post-card">
                 <p className="card-header">
                     <span style={{fontStyle: "italic", fontWeight: "bold"}}>
                         Posted by {post.postAuthor}

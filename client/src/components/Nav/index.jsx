@@ -2,20 +2,16 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import React, {useState} from "react";
 import CategoryMenu from "../CategoryMenu";
-import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../../utils/queries';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faUser, faPersonThroughWindow, faToilet, faPoo } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser, faPersonThroughWindow, faToilet, faPoo, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
 
-  const[overUser, setOverUser] = useState(false);
-  const[overLogOut, setOverLogOut] = useState(false);
-  const[overLogIn, setOverLogIn] = useState(false);
-  const[overSignUp, setOverSignUp] = useState(false);
-
-  const { categoryData } = useQuery(QUERY_CATEGORIES);
-  const categories = categoryData?.categories || [];
+  const[overUser, setOverUser] = useState(false)
+  const[overLogOut, setOverLogOut] = useState(false)
+  const[overLogIn, setOverLogIn] = useState(false)
+  const[overSignUp, setOverSignUp] = useState(false)
+  const[overCreatePost, setOverCreatePost] = useState(false)
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -31,6 +27,15 @@ function Nav() {
             onMouseOver={() => setOverUser(true)}
             onMouseLeave={() => setOverUser(false)}
             ><FontAwesomeIcon icon={ faUser } size="2xl" style={overUser ? {color: "#000000"} : {color : "#ABC4AB"}}/></Link>
+            </p>
+          </li>
+          <li>
+            <p>
+              <Link to='/create-post'
+              onMouseOver={() => setOverCreatePost(true)}
+              onMouseLeave={() => setOverCreatePost(false)}
+              ><FontAwesomeIcon icon={ faPlus } size="2xl" style={overCreatePost ? {color: "#000000"} : {color : "#ABC4AB"}}></FontAwesomeIcon>  
+              </Link>
             </p>
           </li>
           <li>

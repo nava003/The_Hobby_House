@@ -6,7 +6,7 @@ import Auth from "../utils/auth";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 
-const Profile = () => {
+const CreatePost = () => {
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -15,10 +15,6 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-  if (Auth.loggedIn() && Auth.getProfile().authenticatedPerson.username === userParam) {
-    return <Navigate to="/me" replace={true} />;
-  }
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -26,18 +22,15 @@ const Profile = () => {
   if (!user?.username) {
     return (
       <h4>
-        You need to be logged in to see this. Use the navigation links on the left to
-        sign up or log in!
+        You need to be logged in to make a post! Follow the Toilet and/or Poop emojis to log in and sign up
       </h4>
     );
   }
 
   return (
     <div className="main-div">
-      <div className="">
-        <h2 className="viewingMessage">
-          Viewing {userParam ? `${user.username}'s` : "Your"} Profile
-        </h2>
+      <div className="post-form-container">
+        {!userParam && <PostForm />}
       </div>
 
       <div className="">
@@ -53,4 +46,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default CreatePost;

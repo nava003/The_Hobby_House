@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useParams } from "react";
 // import { UPDATE_POST, REMOVE_POST } from "../../utils/actions";
-import { useHobbyContext } from "../../utils/GlobalState";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import LikeButton from '../LikeButton';
+import LikeButton from "../LikeButton";
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
-  const [state] = useHobbyContext();
-  const { currentCategory } = state;
+
+
 
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
@@ -25,18 +24,16 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
   }
 
   return (
-    <div className="">
-      <div className="center">
-        {showTitle && <h3 className="">{title}</h3>}
-      </div>
+    <div className="main-div">
+      <div className="center">{showTitle && <h3 className="">{title}</h3>}</div>
       <div className="home-container">
         {posts &&
           filterPosts().map((post) => (
             <div key={post._id} className="card">
               <h3 className="">
                 {showUsername ? (
-                  <Link className="" to={`/profiles/${post.postAuthor}`}>
-                    {post.postAuthor} <br />
+                  <Link className="profile-name" to={`/profiles/${Post.postAuthor}`}>
+                    {Post.postAuthor} <br />
                   </Link>
                 ) : (
                   <>
@@ -46,7 +43,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                   </>
                 )}
               </h3>
-              
+
               <div className="description">
                 <p>{post.postDesc}</p>
               </div>
@@ -61,15 +58,21 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                   ))}
                 </ul>
               </div> */}
-              
-              <small>{post.createdAt}</small>
-             
+
+              <small>{Post.createdAt}</small>
+
               <hr />
-              <Link to={`/Posts/${post._id}`} ><FontAwesomeIcon icon={ faComment } style={{color : "var(--brown"}}/>
-              </Link>
-              <LikeButton />
-              
-              
+              <div className="comments-likes-container">
+                <Link to={`/Posts/${Post._id}`}>
+                  <FontAwesomeIcon
+                    icon={faComment}
+                    size="lg"
+                    style={{ color: "var(--brown" }}
+                  />
+                </Link>
+                
+                <LikeButton />
+              </div>
             </div>
           ))}
       </div>
@@ -78,4 +81,3 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 };
 
 export default PostList;
-

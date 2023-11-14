@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 import PostList from '../components/PostList';
-import CategoryMenu from '../components/CategoryMenu';
 import { QUERY_POSTS } from '../utils/queries';
 
 const Home = () => {
@@ -10,15 +9,16 @@ const Home = () => {
     return (
       <div className="main-div">
         <div className="">
-          {poLoading ? (
+          <h1 className='post-list-title'>
+            Newest Posts
+          </h1>
+
+          {loading ? (
             <div>Loading...</div>
           ) : (
-            <>
-              <CategoryMenu />
-              <PostList
-                posts={posts}
-                title="Newest Posts" />
-            </>
+            <PostList
+              posts={posts}
+            />
           )}
         </div>
       </div>
