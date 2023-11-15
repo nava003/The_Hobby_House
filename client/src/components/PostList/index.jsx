@@ -63,8 +63,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                     style={{ color: "var(--brown" }}
                   />
                 </Link>
-                {Post.postAuthor === userId && (
-                  <Link to={`/edit-post/${Post._id}`}>
+                {post.postAuthor === userId && (
+                  <Link to={`/edit-post/${post._id}`}>
                     <FontAwesomeIcon
                       icon={faPenToSquare}
                       size="lg"
@@ -72,11 +72,11 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                     />
                   </Link>
                 )}
-                {Post.postAuthor === userId && (
-                  <DeleteButton postId={Post._id}/>
+                {post.postAuthor === userId && (
+                  <DeleteButton postId={post._id}/>
                 )}
 
-                <LikeButton postId={Post._id} initialLikes={Post.likes} />
+                <LikeButton postId={post._id} initialLikes={post.likes} />
                 
               </div>
             </div>
