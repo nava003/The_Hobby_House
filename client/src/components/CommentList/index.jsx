@@ -3,13 +3,13 @@ import { UPDATE_COMMENT, REMOVE_COMMENT } from "../../utils/actions";
 const CommentList = ({ comments = [] }) => {
   
   if (!comments.length) {
-    return <h3>🦗 *cricket noises*</h3>;
+    return <h3 className="cricket">🦗 *cricket noises*</h3>;
   }
 
   return (
     <>
       <h3
-        className="p-5 display-inline-block"
+        className="comment-list-header"
         style={{ borderBottom: "1px dotted #1a1a1a" }}
       >
         Comments
@@ -22,7 +22,7 @@ const CommentList = ({ comments = [] }) => {
               <div className="inside-comment-card">
                 <h5 className="card-header">
                   {comment.commentAuthor} commented {" "}
-                  <span style={{ fontSize: "0.825rem" }}>
+                  <span>
                     on {comment.createdAt}
                   </span>
                 </h5>

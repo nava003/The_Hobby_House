@@ -6,7 +6,7 @@ import { ADD_COMMENT } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
-const CommentForm = ({ }) => {
+const CommentForm = ({}) => {
   const { postId } = useParams();
   const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
@@ -52,10 +52,7 @@ const CommentForm = ({ }) => {
             Character Count: {characterCount}/250
             {error && <span className="ml-2">{error.message}</span>}
           </p>
-          <form
-            className="comment-form"
-            onSubmit={handleFormSubmit}
-          >
+          <form className="" onSubmit={handleFormSubmit}>
             <textarea
               name="commentText"
               placeholder="Leave a comment..."
@@ -64,9 +61,11 @@ const CommentForm = ({ }) => {
               onChange={handleChange}
             ></textarea>
 
-            <button className="submit-button" type="submit">
-              Submit
-            </button>
+            <div className="submit-button-container">
+              <button className="submit-button" type="submit">
+                <p>Submit</p>
+              </button>
+            </div>
           </form>
         </>
       ) : (
