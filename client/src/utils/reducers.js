@@ -5,8 +5,7 @@ import{
     UPDATE_CURRENT_CATEGORY,
     REMOVE_POST,
     REMOVE_COMMENT,
-    TOGGLE_DONATION,
-    LIKE_POST
+    TOGGLE_DONATION
 } from "./actions";
 
 export const reducer = (state, action) => {

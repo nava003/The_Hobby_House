@@ -67,3 +67,37 @@ export const ADD_LIKE = gql`
     }
   }
 `;
+
+export const REMOVE_POST = gql`
+  mutation removePost($postId: ID!) {
+    removePost(postId: $postId) {
+      _id
+      postDesc
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
+    }
+  }
+`;
+
+export const EDIT_POST = gql`
+  mutation editPost($postId: ID!, $postDesc: String!) {
+    editPost(postId: $postId, postDesc: $postDesc) {
+      _id
+      postDesc
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
+    }
+  }
+`;

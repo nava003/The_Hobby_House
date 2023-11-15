@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import React, { useParams } from "react";
 // import { UPDATE_POST, REMOVE_POST } from "../../utils/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import LikeButton from "../LikeButton";
+import DeleteButton from "../DeleteButton";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../../utils/queries";
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
+  const { data } = useQuery(QUERY_ME);
+  const userId = data?.me?.username;
 
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
@@ -58,9 +63,21 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                     style={{ color: "var(--brown" }}
                   />
                 </Link>
-                
-                <LikeButton postId={Post._id} initialLikes={Post.likes}/>
+                {post.postAuthor === userId && (
+                  <Link to={`/edit-post/${post._id}`}>
+                    <FontAwesomeIcon
+                      icon={faPenToSquare}
+                      size="lg"
+                      style={{ color: "var(--brown" }}
+                    />
+                  </Link>
+                )}
+                {post.postAuthor === userId && (
+                  <DeleteButton postId={post._id}/>
+                )}
 
+                <LikeButton postId={post._id} initialLikes={post.likes} />
+                
               </div>
             </div>
           ))}

@@ -49,7 +49,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPost(postTitle: String!, postDesc: String!): Post
     addComment(postId: ID!, commentText: String!): Post
-    removePost(postId: ID!): Post
+    removePost(postId: ID!): Post 
     removeComment (postId: ID!, commentId: ID!): Post
     updatePost(postId: ID!, postTitle: String!, postDesc: String!): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
@@ -57,6 +57,7 @@ const typeDefs = `
     updatePassword(userId: ID!, password: String!, email: String!): User
     
     likePost(postId: ID!): Post
+    editPost(postId: ID!, postDesc: String!): Post
     
   }
 `;
