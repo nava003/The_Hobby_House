@@ -7,7 +7,6 @@ import {
 } from "@apollo/client";
 
 import Nav from "./components/Nav";
-import { HobbyProvider } from "./utils/GlobalState";
 // import Footer from "./components/Footer";
 
 import { setContext } from "@apollo/client/link/context";
@@ -36,11 +35,9 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <Nav />
-            <HobbyProvider>
-                <div className="outlet">
-                    <Outlet />
-                </div>
-            </HobbyProvider>
+            <div className="outlet">
+                <Outlet />
+            </div>
         </ApolloProvider>
     );
 }
