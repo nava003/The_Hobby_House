@@ -13,7 +13,7 @@ const Home = () => {
             Newest Posts
           </h1>
 
-          {loading ? (
+          {poLoading ? (
             <div>Loading...</div>
           ) : (
             <PostList

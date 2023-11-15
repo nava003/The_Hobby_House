@@ -16,8 +16,6 @@ const HobbyProvider = ({ value = [], ...props }) => {
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useHobbyContext = () => {
-  return useContext(HobbyContext);
-};
+const useHobbyContext = () => useContext(HobbyContext);
 
 export { HobbyProvider, useHobbyContext };

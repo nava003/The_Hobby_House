@@ -7,20 +7,8 @@ import LikeButton from "../LikeButton";
 
 const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
 
-
-
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
-  }
-
-  function filterPosts() {
-    if (!currentCategory) {
-      return state.posts;
-    }
-
-    return state.posts.filter(
-      (post) => post.category._id === currentCategory
-    );
   }
 
   return (
@@ -28,12 +16,12 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
       <div className="center">{showTitle && <h3 className="">{title}</h3>}</div>
       <div className="home-container">
         {posts &&
-          filterPosts().map((post) => (
+          posts.map((post) => (
             <div key={post._id} className="card">
               <h3 className="">
                 {showUsername ? (
-                  <Link className="profile-name" to={`/profiles/${Post.postAuthor}`}>
-                    {Post.postAuthor} <br />
+                  <Link className="profile-name" to={`/profiles/${post.postAuthor}`}>
+                    {post.postAuthor} <br />
                   </Link>
                 ) : (
                   <>
@@ -59,11 +47,11 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                 </ul>
               </div> */}
 
-              <small>{Post.createdAt}</small>
+              <small>{post.createdAt}</small>
 
               <hr />
               <div className="comments-likes-container">
-                <Link to={`/Posts/${Post._id}`}>
+                <Link to={`/Posts/${post._id}`}>
                   <FontAwesomeIcon
                     icon={faComment}
                     size="lg"

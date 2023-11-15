@@ -2,10 +2,11 @@ const { Schema, model } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 const postSchema = new Schema({
-//   postImage: {
-//     type: String,
-//     required: true
-//   },
+  postTitle: {
+    type: String,
+    required: true,
+    trim: true
+  },
   postDesc: {
     type: String,
     required: "Leave a description!",
@@ -41,6 +42,10 @@ const postSchema = new Schema({
       },
     },
   ],
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category'
+  },
   likes: {
     type: Number,
     default: 0,
