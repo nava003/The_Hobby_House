@@ -10,12 +10,16 @@ const LikeButton = ({ postId, initialLikes }) => {
   const [likes, setLikes] = useState(likesCount);
   const [liked, setLiked] = useState(false);
 
+  const [overLike, setOverLike] = useState(false);
+
   const [addLike, { error, data }] = useMutation(ADD_LIKE);
+const LikeButton = ({ postId }) => {
+    const [likes, setLikes] = useState(0);
+    const [addLike, { error, data }] = useMutation(ADD_LIKE);
 
   const likePost = async () => {
     try {
       const { data } = await addLike({ variables: { postId } });
-
       if (data && data.likePost && data.likePost.likes) {
         setLikes(data.likePost.likes);
         setLiked(true);
@@ -32,12 +36,12 @@ const LikeButton = ({ postId, initialLikes }) => {
         <FontAwesomeIcon
           icon={faHeart}
           size="lg"
-          style={{ color: "var(--brown" }}
+          style={liked ? { color: "FF0000" } : { color: "var(--brown)" }}
           onClick={liked ? null : likePost}
         />
       </p>
     </div>
   );
 };
-
+}
 export default LikeButton;
