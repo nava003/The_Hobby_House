@@ -3,7 +3,7 @@ import PostList from '../components/PostList';
 import { QUERY_POSTS } from '../utils/queries';
 
 const Home = () => {
-    const { poLoading, data } = useQuery(QUERY_POSTS);
+    const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
 
     return (
@@ -13,7 +13,7 @@ const Home = () => {
             Newest Posts
           </h1>
 
-          {poLoading ? (
+          {loading ? (
             <div>Loading...</div>
           ) : (
             <PostList

@@ -18,8 +18,10 @@ function Nav() {
       return (
         <ul className="nav-form">
           <li>
-            <p><FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/></p>
-            <CategoryMenu />
+            <button>
+              <FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/>
+              <CategoryMenu />
+            </button>
           </li>
           <li>
             <p>
