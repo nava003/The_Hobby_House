@@ -1,4 +1,4 @@
-const { User, Post } = require("../models");
+const { User, Post, Category } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -8,6 +8,9 @@ const resolvers = {
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("posts");
+    },
+    categories: async () => {
+      return await Category.find();
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -47,10 +50,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postDesc }, context) => {
+    addPost: async (parent, { postTitle, postDesc }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postDesc,
+          postTitle, postDesc,
           postAuthor: context.user.username,
         });
 
@@ -120,11 +123,11 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updatePost: async (parent, { postId, postDesc }, context) => {
+    updatePost: async (parent, { postId, postTitle }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId, postAuthor: context.user.username },
-          { postDesc },
+          { postTitle },
           { new: true }
         );
       }
