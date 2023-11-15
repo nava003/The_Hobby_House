@@ -1,4 +1,4 @@
-const { User, Post } = require("../models");
+const { User, Post, Category } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -8,6 +8,9 @@ const resolvers = {
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("posts");
+    },
+    categories: async () => {
+      return await Category.find();
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -47,10 +50,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postDesc }, context) => {
+    addPost: async (parent, { postTitle, postDesc }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postDesc,
+          postTitle, postDesc,
           postAuthor: context.user.username,
         });
 
@@ -82,25 +85,27 @@ const resolvers = {
     },
     removePost: async (parent, { postId }, context) => {
       if (context.user) {
-        const post = await Post.findOneAndDelete({
+        const deletedPost = await Post.findOneAndDelete({
           _id: postId,
           postAuthor: context.user.username,
         });
 
-        await User.findOneAndUpdate(
+        const user= await User.findOneAndUpdate(
           {
             _id: context.user._id,
           },
           {
-            $pull: { posts: post._id },
+            $pull: { posts: deletedPost._id },
           }
         );
+        return deletedPost;
       }
       throw AuthenticationError;
     },
     removeComment: async (parent, { postId, commentId }, context) => {
       if (context.user) {
-        return Post.findOneAndUpdate(
+
+        const deletedPost = await Post.findOneAndUpdate(
           { _id: postId },
           {
             $pull: {
@@ -114,14 +119,15 @@ const resolvers = {
             new: true,
           }
         );
+        return deletedPost;
       }
       throw AuthenticationError;
     },
-    updatePost: async (parent, { postId, postDesc }, context) => {
+    updatePost: async (parent, { postId, postTitle }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId, postAuthor: context.user.username },
-          { postDesc },
+          { postTitle },
           { new: true }
         );
       }
@@ -191,6 +197,24 @@ const resolvers = {
       }
       throw new Error('You need to be logged in to like posts!');
     },
+    editPost: async (parent, { postId, postDesc }, context) => {
+      if (context.user) {
+
+        const newPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $set: {
+              postDesc: postDesc,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+        return newPost;
+      }
+      throw new Error('You need to be logged in to edit posts!');
+    }
   },
 };
 

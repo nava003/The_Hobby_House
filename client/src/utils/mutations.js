@@ -25,9 +25,10 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postDesc: String!, $postAuthor: String!) {
-    addPost(postDesc: $postDesc, postAuthor: $postAuthor) {
+  mutation addPost($postTitle: String!, $postDesc: String!) {
+    addPost(postTitle: $postTitle, postDesc: $postDesc) {
       _id
+      postTitle
       postDesc
       postAuthor
       createdAt
@@ -44,6 +45,7 @@ export const ADD_COMMENT = gql`
   mutation addComment($postId: ID!, $commentText: String!) {
     addComment(postId: $postId, commentText: $commentText) {
       _id
+      postTitle
       postDesc
       postAuthor
       createdAt
@@ -62,6 +64,40 @@ export const ADD_LIKE = gql`
     likePost(postId: $postId) {
       _id
       likes
+    }
+  }
+`;
+
+export const REMOVE_POST = gql`
+  mutation removePost($postId: ID!) {
+    removePost(postId: $postId) {
+      _id
+      postDesc
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
+    }
+  }
+`;
+
+export const EDIT_POST = gql`
+  mutation editPost($postId: ID!, $postDesc: String!) {
+    editPost(postId: $postId, postDesc: $postDesc) {
+      _id
+      postDesc
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentAuthor
+        commentText
+        createdAt
+      }
     }
   }
 `;

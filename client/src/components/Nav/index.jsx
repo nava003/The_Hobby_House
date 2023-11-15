@@ -1,6 +1,7 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, {useState} from "react";
+import CategoryMenu from "../CategoryMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -23,13 +24,10 @@ function Nav() {
       return (
         <ul className="nav-form">
           <li>
-            <p>
-              <FontAwesomeIcon
-                icon={faBars}
-                size="2xl"
-                style={{ color: "#ABC4AB" }}
-              />
-            </p>
+            <button>
+              <FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/>
+              <CategoryMenu />
+            </button>
           </li>
           <li>
             <p>
