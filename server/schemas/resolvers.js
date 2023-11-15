@@ -174,6 +174,12 @@ const resolvers = {
     },
     likePost: async (parent, { postId }, context) => {
       if (context.user) {
+        const post = await Post.findById(postId);
+        const user = post.postAuthor;
+
+        if (user === context.user.username) {
+          throw new Error('You can\'t like your own post!')
+        }
         return Post.findOneAndUpdate(
           { _id: postId },
           {
@@ -186,7 +192,7 @@ const resolvers = {
           }
         );
       }
-      throw AuthenticationError;
+      throw new Error('You need to be logged in to like posts!');
     },
   },
 };
