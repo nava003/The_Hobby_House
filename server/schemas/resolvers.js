@@ -82,25 +82,27 @@ const resolvers = {
     },
     removePost: async (parent, { postId }, context) => {
       if (context.user) {
-        const post = await Post.findOneAndDelete({
+        const deletedPost = await Post.findOneAndDelete({
           _id: postId,
           postAuthor: context.user.username,
         });
 
-        await User.findOneAndUpdate(
+        const user= await User.findOneAndUpdate(
           {
             _id: context.user._id,
           },
           {
-            $pull: { posts: post._id },
+            $pull: { posts: deletedPost._id },
           }
         );
+        return deletedPost;
       }
       throw AuthenticationError;
     },
     removeComment: async (parent, { postId, commentId }, context) => {
       if (context.user) {
-        return Post.findOneAndUpdate(
+
+        const deletedPost = await Post.findOneAndUpdate(
           { _id: postId },
           {
             $pull: {
@@ -114,6 +116,7 @@ const resolvers = {
             new: true,
           }
         );
+        return deletedPost;
       }
       throw AuthenticationError;
     },
@@ -191,6 +194,24 @@ const resolvers = {
       }
       throw new Error('You need to be logged in to like posts!');
     },
+    editPost: async (parent, { postId, postDesc }, context) => {
+      if (context.user) {
+
+        const newPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $set: {
+              postDesc: postDesc,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+        return newPost;
+      }
+      throw new Error('You need to be logged in to edit posts!');
+    }
   },
 };
 
