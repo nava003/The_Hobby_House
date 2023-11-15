@@ -9,6 +9,7 @@ const LikeButton = ({ postId, initialLikes }) => {
 
   const [likes, setLikes] = useState(likesCount);
   const [liked, setLiked] = useState(false);
+
   const [overLike, setOverLike] = useState(false);
 
   const [addLike, { error, data }] = useMutation(ADD_LIKE);
@@ -19,7 +20,6 @@ const LikeButton = ({ postId }) => {
   const likePost = async () => {
     try {
       const { data } = await addLike({ variables: { postId } });
-
       if (data && data.likePost && data.likePost.likes) {
         setLikes(data.likePost.likes);
         setLiked(true);

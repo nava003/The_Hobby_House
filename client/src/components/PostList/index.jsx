@@ -61,7 +61,8 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                   />
                 </Link>
                 
-                <LikeButton />
+                <LikeButton postId={Post._id} initialLikes={Post.likes}/>
+
               </div>
             </div>
           ))}
