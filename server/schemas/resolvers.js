@@ -50,10 +50,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postTitle, postDesc }, context) => {
+    addPost: async (parent, {  postDesc }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postTitle, postDesc,
+          postDesc,
           postAuthor: context.user.username,
         });
 
@@ -123,11 +123,10 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    updatePost: async (parent, { postId, postTitle }, context) => {
+    updatePost: async (parent, { postId }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId, postAuthor: context.user.username },
-          { postTitle },
           { new: true }
         );
       }

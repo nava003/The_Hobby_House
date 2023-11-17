@@ -14,7 +14,6 @@ const typeDefs = `
 
   type Post {
     _id: ID
-    postTitle: String!
     postDesc: String!
     postAuthor: String
     createdAt: String
@@ -47,15 +46,14 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postTitle: String!, postDesc: String!): Post
+    addPost(postDesc: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post 
     removeComment (postId: ID!, commentId: ID!): Post
-    updatePost(postId: ID!, postTitle: String!, postDesc: String!): Post
+    updatePost(postId: ID!, postDesc: String!): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     updateUser(userId: ID!, username: String!, email: String!): User
     updatePassword(userId: ID!, password: String!, email: String!): User
-    
     likePost(postId: ID!): Post
     editPost(postId: ID!, postDesc: String!): Post
     
