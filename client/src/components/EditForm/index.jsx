@@ -46,14 +46,11 @@ const EditForm = ({ postId }) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <textarea
-        name="postDesc"
-        value={postDesc}
-        onChange={handleChange}
-      />
-      <p>Character Count: {characterCount}</p>
-      <button type="submit">Update Post</button>
+    <form className="post-form-inside" onSubmit={handleFormSubmit}>
+      <h3 className="post-form-title">Edit Your Post Bellow</h3>
+      <p className="post-character-counter">Character Count: {characterCount}</p>
+      <textarea className="form-input" name="postDesc" value={postDesc} onChange={handleChange} />
+      <button className="submit-button" type="submit">Update Post</button>
     </form>
   );
 };

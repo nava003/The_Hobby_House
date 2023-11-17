@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useParams } from "react";
+import React, { useParams , useState} from "react";
 // import { UPDATE_POST, REMOVE_POST } from "../../utils/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -55,6 +55,7 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
               <small>{post.createdAt}</small>
 
               <hr />
+
               <div className="comments-likes-container">
                 <Link to={`/Posts/${post._id}`}>
                   <FontAwesomeIcon
@@ -63,15 +64,17 @@ const PostList = ({ posts, title, showTitle = true, showUsername = true }) => {
                     style={{ color: "var(--brown" }}
                   />
                 </Link>
+
                 {post.postAuthor === userId && (
                   <Link to={`/edit-post/${post._id}`}>
                     <FontAwesomeIcon
                       icon={faPenToSquare}
                       size="lg"
-                      style={{ color: "var(--brown" }}
+                      style={{color: "var(--brown)"}}
                     />
                   </Link>
                 )}
+
                 {post.postAuthor === userId && (
                   <DeleteButton postId={post._id}/>
                 )}

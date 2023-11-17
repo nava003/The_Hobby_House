@@ -49,7 +49,7 @@ const PostForm = () => {
 
   return (
     <div className='post-form-inside'>
-      <h3 className='post-form-title'>What's on your techy mind?</h3>
+      <h3 className='post-form-title'>What would you like to post?</h3>
 
       {Auth.loggedIn() ? (
         <>
