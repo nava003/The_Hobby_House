@@ -6,6 +6,7 @@ import { REMOVE_POST } from "../../utils/mutations";
 // import { QUERY_POSTS } from "../../utils/queries";
 
 const DeleteButton = ({ postId }) => {
+    const [ overTrash, setOverTrash ] = useState(false)
 
     const [removePost, { error, data }] = useMutation(REMOVE_POST);
 
@@ -22,11 +23,14 @@ const DeleteButton = ({ postId }) => {
 
   return (
     <div className="likes-container">
-      <p>
+      <p
+        onMouseOver={() => setOverTrash(true)}
+        onMouseLeave={() => setOverTrash(false)}
+      >
         <FontAwesomeIcon
           icon={faTrash}
           size="lg"
-          style={{ color: "var(--brown" }}
+          style={overTrash ? {color: "var(--white)"} : {color: "var(--brown)"}}
           onClick={deletePost}
         />
       </p>
