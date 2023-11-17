@@ -23,11 +23,9 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="nav-form">
-          <li>
-            <button>
-              <FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/>
-              <CategoryMenu />
-            </button>
+          <li className="dropdown-menu">
+            <FontAwesomeIcon icon={ faBars } size="2xl" style={{color : "#ABC4AB"}}/>
+            <CategoryMenu />
           </li>
           <li>
             <p>

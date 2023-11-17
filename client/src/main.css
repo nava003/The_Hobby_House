@@ -345,31 +345,6 @@ hr {
   color: var(--white);
 }
 
-.tooltipnav {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltipnavtext {
-  visibility: hidden;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
-  border-radius: 8px;
-  padding: 5px 0;
-
-  /* Positioning the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 105%;
-}
-
-.tooltipnav:hover .tooltipnavtext {
-  visibility: visible;
-}
-
 .outlet{
   display: flex;
   flex-direction: column;
@@ -424,4 +399,49 @@ hr {
 .comment-list-header{
   margin-top: 50px;
   font-size: 32px;
+}
+
+.dropdown-menu {
+  position: relative;
+  float: right;
+  padding: 0px 60px 0px 60px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: -7px;
+  left: 110px;
+  background-color: var(--brown);
+  padding: 5px;
+  color:var(--light-green);
+}
+
+.dropdown-menu:hover .dropdown-content{
+  display: block;
+}
+
+.tooltipnav {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipnavtext {
+  visibility: hidden;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px 0;
+
+  /* Positioning the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltipnav:hover .tooltipnavtext {
+  visibility: visible;
 }

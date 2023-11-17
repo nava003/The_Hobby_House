@@ -5,13 +5,13 @@ function CategoryMenu() {
     const categories = data?.categories || [];
 
     return (
-        <div className='dropdown-content'>
+        <ul className='dropdown-content'>
             {categories.map((category) => (
                 <div key={category._id} className=''>
                     {category.name}
                 </div>
             ))}
-        </div>
+        </ul>
     )
 }
 
