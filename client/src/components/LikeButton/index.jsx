@@ -10,12 +10,7 @@ const LikeButton = ({ postId, initialLikes }) => {
   const [likes, setLikes] = useState(likesCount);
   const [liked, setLiked] = useState(false);
 
-  const [overLike, setOverLike] = useState(false);
-
   const [addLike, { error, data }] = useMutation(ADD_LIKE);
-const LikeButton = ({ postId }) => {
-    const [likes, setLikes] = useState(0);
-    const [addLike, { error, data }] = useMutation(ADD_LIKE);
 
   const likePost = async () => {
     try {
@@ -43,5 +38,6 @@ const LikeButton = ({ postId }) => {
     </div>
   );
 };
-}
+
+
 export default LikeButton;
