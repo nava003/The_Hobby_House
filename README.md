@@ -6,9 +6,7 @@ The Hobby House is a social media website where users can sign up and begin part
 Users can find their hobby in a Categories list (or personally create one!) and begin posting images, videos, comments and/or stories with other like-minded hobbyists!
 
 ## Installation
-N/A
-
-## Usage
-
+Simply head over to the Heroku Deployed Version link down below, and start your journey to share your hobbies with everyone else! 
 
 ## Deployed Link
+Deployed Heroku Version: https://groupfor-hobby-house-app-559c2ce6f0fa.herokuapp.com/
