@@ -13,12 +13,6 @@ const server = new ApolloServer({
   resolvers,
 });
 
-const cors = require('cors');
-app.use(cors());
-app.use(cors({
-  origin: 'https://hobbyhouse.netlify.app'
-}))
-
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();

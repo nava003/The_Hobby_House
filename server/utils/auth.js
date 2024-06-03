@@ -1,8 +1,8 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
-const secret = 'mysecretssshhhhhhh';
-const expiration = '2h';
+const secret = process.env.JWT_TOKEN;
+const expiration = process.env.JWT_EXP;
 
 module.exports = {
   AuthenticationError: new GraphQLError('Could not authenticate user.', {
