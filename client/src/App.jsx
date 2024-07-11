@@ -3,11 +3,9 @@ import {
     InMemoryCache,
     ApolloProvider,
     createHttpLink,
-    useQuery,
 } from "@apollo/client";
 
 import Nav from "./components/Nav";
-// import Footer from "./components/Footer";
 
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
