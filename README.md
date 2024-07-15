@@ -9,7 +9,7 @@ Users can find their hobby in a Categories list (or personally create one!) and 
 No installation necessary! Simply click on the deployed link below, and start your journey to share your hobbies with everyone else! 
 
 ## Deployed Link
-Deployed Render Version: [https://groupfor-hobby-house-app-559c2ce6f0fa.herokuapp.com/](https://the-hobby-house.onrender.com)
+Deployed Render Version: https://the-hobby-house.onrender.com
 
 ## Minor Warning
 It may take up to 1 minute for the server to respond to initial activity, due to the Free version limitations of Render services.  
